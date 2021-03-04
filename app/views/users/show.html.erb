@@ -1,3 +1,7 @@
 <%= @user.email %> 
 
 <%= @user.shelves.first %>
+
+<div><%= link_to 'Create New Shelf', new_user_shelf_path(@user) if @user == current_user %></div>
+
+<%= @user.shelves.count %>

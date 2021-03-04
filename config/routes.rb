@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show] do 
+    resources :shelves, only: [:show, :new]
+  end
 
   root to: "home#index"
 

@@ -11,6 +11,9 @@
             <li class="nav-item">
                 <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
             </li>
+            <li class="nav-item">
+              <%= link_to 'My Page', user_path(current_user), class: 'nav-link' %>
+            </li>
         <% else %>
             <li class="nav-item">
                 <%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
@@ -21,7 +24,7 @@
         <% end %>
         
         
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </a>
@@ -31,10 +34,8 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+        </li> -->
+
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
