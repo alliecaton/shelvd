@@ -9,7 +9,7 @@ class ShelvesController < ApplicationController
 
     def new
         user = User.find_by(id: params[:user_id])
-        if params[:user_id] && user != current_user
+        if params[:user_id] && user_signed_in? && user != current_user
             redirect_to user_path(user), alert: "User not found"
         else
             @shelf = Shelf.new(user_id: params[:user_id])

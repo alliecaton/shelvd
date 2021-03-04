@@ -11,4 +11,8 @@ class Book < ApplicationRecord
         GoogleBooks.search("#{search}", {count: 1 }).first
     end 
 
+    def self.sort_by_rating(books)
+        books.order :average_rating
+    end
+
 end
