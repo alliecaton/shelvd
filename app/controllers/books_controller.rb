@@ -1,12 +1,14 @@
 class BooksController < ApplicationController
 
     def index 
-        # @books = GoogleBooks.search("#{params[:search]}", {count: 3 })
+        if params[:search]
+            @books = GoogleBooks.search("#{params[:search]}", {count: 3 })
+        end
     end 
 
-    def show 
-        ## want to be able to show a book without saving it to the DB. only wanna save a book to the db if it gets saved to a list
-    end 
+    # def show 
+    #     @book = Book.find(params[:id])
+    # end 
 
     def new 
     end
@@ -14,14 +16,14 @@ class BooksController < ApplicationController
     def create 
         @search = Book.search(params[:search])
         @book = Book.new(book_params)
-
-        redirect_to 
+        @book.save
+        redirect_to book_path(@book)
     end
 
     private 
 
     def book_params
-        params.require(:book).permit(:title, :description, :rating, :author_id)
+        params.require(:book).permit(:title, :description, :average_rating, :author_id)
     end 
 
 end

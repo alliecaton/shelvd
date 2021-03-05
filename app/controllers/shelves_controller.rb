@@ -1,4 +1,5 @@
 class ShelvesController < ApplicationController
+    ## add before action that requires login
     
     def index
     end

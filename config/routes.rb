@@ -7,10 +7,11 @@ Rails.application.routes.draw do
     resources :shelves, only: [:show, :new]
   end
 
-  root to: "home#index"
+  root to: "books#index"
 
   resources :books
   resources :shelves
   resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  
 end
