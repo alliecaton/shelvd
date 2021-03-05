@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
     def index 
         if params[:search]
-            @books = GoogleBooks.search("#{params[:search]}", {count: 3 })
+            @books = Book.search("#{params[:search]}")
         end
     end 
 
