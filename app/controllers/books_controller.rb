@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
     def index 
         if params[:search]
-            @books = Book.search("#{params[:search]}")
+            @books = Book.search("#{params[:search]}").uniq {|book| book.title }
         end
     end 
 

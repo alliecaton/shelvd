@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root to: "books#index"
 
-  resources :books, params: :slug
+  resources :books, params: :isbn
 
   resources :shelves
   resources :users
