@@ -6,16 +6,19 @@ class BooksController < ApplicationController
         end
     end 
 
-    # def show 
-    #     @book = Book.find(params[:id])
-    # end 
+    def show 
+        unslug = unslug(params[:id])
+        @display_book = Book.search("#{unslug}").first
+        @book = Book.new(title: @display_book.title, description: @display_book.description, average_rating: @display_book.average_rating)
 
-    def new 
-    end
+    end 
+
+    # def new 
+    # end
 
     def create 
-        @search = Book.search(params[:search])
         @book = Book.new(book_params)
+        @book.users << current_user
         @book.save
         redirect_to book_path(@book)
     end

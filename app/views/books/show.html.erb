@@ -1,4 +1,7 @@
-<p><%= @book.title %></p>
-<p><%= @book.author %></p>
-<p><%= @book.description %></p>
-<p><%= @book.average_rating %></p>
+<img src="<%=@display_book.image_link%>" >
+<p><%= @display_book.title %></p>
+<p><%= @display_book.authors %></p>
+<p><%= @display_book.description %></p>
+<p><%= @display_book.average_rating %></p>
+
+<%= render partial: "form", locals: {book: @book, display_book: @display_book} %>

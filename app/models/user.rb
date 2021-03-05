@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
       has_many :shelves
-      has_many :books, foreign_key: :author_id
-      
+      has_many :books, through: :shelves
+
 end
