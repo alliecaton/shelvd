@@ -4,6 +4,6 @@
 <p><%= @display_book.description %></p>
 <p><%= @display_book.average_rating %></p>
 
-<%= render partial: "form", locals: {book: @book, display_book: @display_book} %>
+<%= render partial: "form", locals: {book: @book, display_book: @display_book, shelves: @shelves} %>
 
-<%= link_to "Add to shelf", {controller: "books", action: "create", title: @display_book.title} %>
+
