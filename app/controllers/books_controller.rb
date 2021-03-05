@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
 
+
     def index 
         if params[:search]
             @books = Book.search("#{params[:search]}")
@@ -7,10 +8,9 @@ class BooksController < ApplicationController
     end 
 
     def show 
-        unslug = unslug(params[:id])
-        @display_book = Book.search("#{unslug}").first
+        isbn = params[:id]
+        @display_book = Book.search("isbn:#{isbn}").first
         @book = Book.new(title: @display_book.title, description: @display_book.description, average_rating: @display_book.average_rating)
-
     end 
 
     # def new 
@@ -18,7 +18,6 @@ class BooksController < ApplicationController
 
     def create 
         @book = Book.new(book_params)
-        @book.users << current_user
         @book.save
         redirect_to book_path(@book)
     end

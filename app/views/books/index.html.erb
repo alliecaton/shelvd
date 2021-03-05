@@ -1,7 +1,7 @@
 <% if !@books.nil?%>
 <ul>
     <% @books.each do |book| %>
-        <%= link_to book.title, book_path(slug(book.title)) %>
+        <%= link_to book.title, book_path(book.isbn) %>
         <li><img src="<%=book.image_link%>" > <%=book.title%> - <%= book.authors %> </li>
     <% end %>
 </ul>
