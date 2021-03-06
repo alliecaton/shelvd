@@ -23,11 +23,12 @@ class BooksController < ApplicationController
     def create 
         @new_book = Book.new(book_params)
         @shelf = Shelf.find_by(id: params[:book][:shelf_ids])
-        if !@shelf.books.select(@new_book)
+
+        if @shelf.books.find_by(title: @new_book.title)
+            redirect_to book_path(@new_book.isbn), notice: "This book is already on this list!"
+        else 
             @new_book.save
             redirect_to book_path(@new_book.isbn), notice: "Book added to #{@shelf.name} shelf"
-        else 
-            redirect_to book_path(@new_book.isbn), notice: "This book is already on this list!"
         end
     end
 
