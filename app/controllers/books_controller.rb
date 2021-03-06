@@ -21,6 +21,7 @@ class BooksController < ApplicationController
     def create 
         byebug
         @book = Book.new(book_params)
+        
         @book.save
         redirect_to book_path(@book)
     end
@@ -28,7 +29,7 @@ class BooksController < ApplicationController
     private 
 
     def book_params
-        params.require(:book).permit(:title, :description, :average_rating, :author_id)
+        params.require(:book).permit(:title, :description, :average_rating, :author_id, :shelf_id)
     end 
 
 end
