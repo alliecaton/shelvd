@@ -2,6 +2,8 @@
 
 <%= shelf.user.email %>
 
+<ul>
 <% shelf.books.each do |book|%>
-    <%= book.title %>
+    <li><%= book.title %></li>
 <% end %>
+</ul>

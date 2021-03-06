@@ -1,8 +1,0 @@
-<% if !@books.nil?%>
-<ul>
-    <% @books.each do |book| %>
-        <img src="<%=book.image_link%>" >
-        <%=book.title%> - <%= book.authors %>
-    <% end %>
-</ul>
-<% end %>

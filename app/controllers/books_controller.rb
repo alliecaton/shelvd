@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+## add before action that requires login to create
 
     def index 
         if params[:search]
@@ -17,19 +17,18 @@ class BooksController < ApplicationController
             @display_book = Book.search("isbn:#{isbn}").first
         end
 
-        @book = Book.new(title: @display_book.title, description: @display_book.description, average_rating: @display_book.average_rating)
+        @book = Book.new
     end 
 
-    def new 
-        @book = Book.new
-    end
-
     def create 
-        @book = Book.new(book_params)
+        @new_book = Book.new(book_params)
         @shelf = Shelf.find_by(id: params[:book][:shelf_ids])
-        @book.shelves << @shelf
-        @book.save
-        redirect_to book_path(@book.isbn), notice: "Book added to #{@shelf.name} shelf"
+        if !@shelf.books.select(@new_book)
+            @new_book.save
+            redirect_to book_path(@new_book.isbn), notice: "Book added to #{@shelf.name} shelf"
+        else 
+            redirect_to book_path(@new_book.isbn), notice: "This book is already on this list!"
+        end
     end
 
     private 

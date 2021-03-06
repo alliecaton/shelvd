@@ -8,5 +8,6 @@
 
 <%= f.collection_select 'shelf_ids', @shelves, :id, :name %>
 
-<%= f.submit %> <%= flash[:notice] %>
+<%= f.submit "Add Book" %> 
 <%end%>
+<%= flash[:notice] %>
