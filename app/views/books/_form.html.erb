@@ -1,6 +1,6 @@
 <%= form_for book do |f| %>
 <%= f.hidden_field :title, value: display_book.title %>
-<%= f.hidden_field :author, value: display_book.authors %>
+<%#= f.hidden_field :author, value: display_book.authors %>
 <%= f.hidden_field :description, value: display_book.description %>
 <%= f.hidden_field :average_rating, value: display_book.average_rating %>
 <%= f.hidden_field :image_link, value: display_book.image_link %>
@@ -8,5 +8,5 @@
 
 <%= f.collection_select 'shelf_ids', @shelves, :id, :name %>
 
-<%= f.submit %>
+<%= f.submit %> <%= flash[:notice] %>
 <%end%>

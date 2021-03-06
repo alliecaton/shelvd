@@ -3,6 +3,10 @@ class Book < ApplicationRecord
     has_many :shelves, through: :books_shelves 
     has_many :users, through: :shelves
 
+    validates :title, presence: true 
+    validates :isbn, presence: :true 
+    # validate :author_id, presence: true
+    # validate :category_id, presence: true
 
 
     # def self.order_by_date
