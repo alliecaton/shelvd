@@ -1,8 +1,10 @@
 <%= form_for book do |f| %>
-<%= f.hidden_field :title, value: display_book.title, readonly: true %><br>
-<%= f.hidden_field :author, value: display_book.authors, readonly: true %><br>
-<%= f.hidden_field :description, value: display_book.description, readonly: true, size: 1500 %><br>
-<%= f.hidden_field :average_rating, value: display_book.average_rating, readonly: true %><br>
+<%= f.hidden_field :title, value: display_book.title %>
+<%= f.hidden_field :author, value: display_book.authors %>
+<%= f.hidden_field :description, value: display_book.description %>
+<%= f.hidden_field :average_rating, value: display_book.average_rating %>
+<%= f.hidden_field :image_link, value: display_book.image_link %>
+<%= f.hidden_field :isbn, value: display_book.isbn %>
 
 <%= f.collection_select 'shelf_ids', @shelves, :id, :name %>
 

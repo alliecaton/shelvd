@@ -10,7 +10,13 @@ class BooksController < ApplicationController
     def show 
         @shelves = current_user.shelves
         isbn = params[:id]
-        @display_book = Book.search("isbn:#{isbn}").first
+
+        if Book.find_by(isbn: params[:id])
+            @display_book = Book.find(params[:id])
+        else 
+            @display_book = Book.search("isbn:#{isbn}").first
+        end
+
         @book = Book.new(title: @display_book.title, description: @display_book.description, average_rating: @display_book.average_rating)
     end 
 
@@ -19,17 +25,26 @@ class BooksController < ApplicationController
     end
 
     def create 
-        byebug
         @book = Book.new(book_params)
-        
+        shelf = Shelf.find_by(id: params[:book][:shelf_ids])
+        byebug
+        @book.shelves << shelf
         @book.save
-        redirect_to book_path(@book)
+        byebug
+        redirect_to book_path(@book.isbn)
     end
 
     private 
 
     def book_params
-        params.require(:book).permit(:title, :description, :average_rating, :author_id, :shelf_id)
+        params.require(:book).permit(:title, 
+            :description, 
+            :average_rating, 
+            :author_id, 
+            :shelf_ids, 
+            :isbn, 
+            :image_link
+         )
     end 
 
 end
