@@ -1,7 +1,7 @@
 module AuthorsHelper
 
     def authors_display
-        if @display_book.authors.length > 0
+        if @display_book.authors.respond_to?('map') && @display_book.authors.length > 0
             @display_book.authors.map do |author|
                 author.name
             end.join(", ")
