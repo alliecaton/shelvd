@@ -14,6 +14,7 @@ class Book < ApplicationRecord
     # def self.order_by_date
     # end 
 
+
     def self.search(search)
         book = GoogleBooks.search("#{search}", {count: 3 })
     end 

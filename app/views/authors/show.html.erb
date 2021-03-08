@@ -1,1 +1,6 @@
 <%= @author.name %>
+<ul>
+<%@books.each do |book|%>
+    <li><%= book.title %></li>
+<% end %>
+</ul>
