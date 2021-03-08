@@ -7,7 +7,15 @@ module BooksHelper
 
     def self.find_by_slug(slug)
         Book.all.find {|book| book.slug == slug}
-    end       
+    end    
+
+    def check_shelves
+        if user_signed_in? && current_user.shelves.length > 0
+            render partial: "form", locals: {book: @book, display_book: @display_book, shelves: @shelves}
+        elsif user_signed_in? && current_user.shelves.length <= 0
+            button_to "Create a shelf", new_user_shelf_path(current_user)
+        end
+    end
 
 
 end

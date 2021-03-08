@@ -7,5 +7,6 @@ module ApplicationHelper
     def unslug(title)
         title.split("-").join(" ")
     end
+    
 
 end

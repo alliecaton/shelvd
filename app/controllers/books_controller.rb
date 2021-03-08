@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
 ## add before action that requires login to create
+## user_signed_in?
 
     def index 
         if params[:search]
@@ -8,7 +9,8 @@ class BooksController < ApplicationController
     end 
 
     def show 
-        @shelves = current_user.shelves
+        @shelves = current_user.shelves if user_signed_in?
+
         isbn = params[:id]
 
         if Book.find_by(isbn: params[:id])
@@ -27,6 +29,9 @@ class BooksController < ApplicationController
         if @shelf.books.find_by(title: @new_book.title)
             redirect_to book_path(@new_book.isbn), notice: "This book is already on this list!"
         else 
+            params[:book][:author].each do |author_name|
+                @new_book.authors << Author.find_or_create_by(name: author_name)
+            end
             @new_book.save
             redirect_to book_path(@new_book.isbn), notice: "Book added to #{@shelf.name} shelf"
         end
@@ -41,7 +46,8 @@ class BooksController < ApplicationController
             :author_id, 
             :shelf_ids, 
             :isbn, 
-            :image_link
+            :image_link, 
+            :author
          )
     end 
 
