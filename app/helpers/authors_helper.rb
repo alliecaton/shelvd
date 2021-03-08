@@ -1,14 +1,11 @@
 module AuthorsHelper
 
-    def authors_display
-        if @display_book.authors.respond_to?('map') && @display_book.authors.length > 0
-            @display_book.authors.map do |author|
-                author.name
-            end.join(", ")
-        else 
-            @authors
-        end 
-    end
 
+    def find_create(book)
+        book.authors.split(",").map do |author_name|
+            Author.find_or_create_by(name: author_name).name
+        end.join(", ")
+    end
+    
 
 end

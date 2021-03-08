@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 ## add before action that requires login to create
 ## user_signed_in?
+    include AuthorsHelper
 
     def index 
         if params[:search]
@@ -10,7 +11,6 @@ class BooksController < ApplicationController
 
     def show 
         @shelves = current_user.shelves if user_signed_in?
-
         isbn = params[:id]
 
         if Book.find_by(isbn: params[:id])
@@ -18,8 +18,8 @@ class BooksController < ApplicationController
         else 
             @display_book = Book.search("isbn:#{isbn}").first  
         end
-        @authors = @display_book.authors
 
+        @authors = find_create(@display_book)
         @book = Book.new
     end 
 

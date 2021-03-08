@@ -15,7 +15,7 @@ class Book < ApplicationRecord
     # end 
 
     def self.search(search)
-        GoogleBooks.search("#{search}", {count: 3 })
+        book = GoogleBooks.search("#{search}", {count: 3 })
     end 
 
     def self.sort_by_rating(books)
