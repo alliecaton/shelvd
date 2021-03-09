@@ -4,9 +4,21 @@
 
 <div><%= link_to 'Create New Reading Room', new_reading_room_path if @user == current_user %></div>
 
-
+<div>
 <% @user.shelves.each do |shelf| %>
    <p><%= link_to shelf.name, shelf_path(shelf)%></p>
 <% end %>
+</div>
+
+<div>
+<h5>Reading Rooms</h5>
+
+<% @user.reading_rooms.each do |room| %>
+   <%= link_to room.name, reading_room_path(room) %>
+<% end %>
+
+</div>
+
+
 
 
