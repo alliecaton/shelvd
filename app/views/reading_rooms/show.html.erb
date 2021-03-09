@@ -7,7 +7,7 @@
 <h5>Active Users:</h5>
 
 <% @room.users.each do |user| %>
-    <%= user.email %>
+    <%= user.name %>
 <% end %>
 </div>
 
@@ -15,7 +15,7 @@
 <div>
 <% if @room.posts.length > 1 %>
 <% @room.posts.each do |post| %>
-<%= link_to post.user.email, user_path(post.user) %> - <%= post.content %> 
+<%= link_to post.user.name, user_path(post.user) %> - <%= post.content %> 
 <% end %>
 <% end %>
 </div>

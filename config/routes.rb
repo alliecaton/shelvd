@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  devise_for :users, controllers: {omniauth_callbacks: 'callbacks'}
+
   
   root to: "books#index"
   
@@ -11,7 +14,6 @@ Rails.application.routes.draw do
 
   resources :authors
   
-  devise_for :users
   
   resources :users
   resources :users, only: [:show] do 
