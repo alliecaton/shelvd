@@ -2,8 +2,11 @@
 
 <div><%= link_to 'Create New Shelf', new_user_shelf_path(@user) if @user == current_user %></div>
 
+<div><%= link_to 'Create New Reading Room', new_reading_room_path if @user == current_user %></div>
 
 
 <% @user.shelves.each do |shelf| %>
    <p><%= link_to shelf.name, shelf_path(shelf)%></p>
 <% end %>
+
+

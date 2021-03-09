@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:github]
 
-      #has_many :posts
-      #has_many :readingrooms, through: :posts
+      has_many :posts
+      has_many :readingrooms, through: :posts
       has_many :shelves
       has_many :books, through: :shelves
 
@@ -18,18 +18,3 @@ class User < ApplicationRecord
   end
 
 end
-
-#class Post
-
-  # belongs_to :user 
-  # belongs_to :readingroom
-
-# end
-
-
-# class ReadingRoom 
-
-#   has_many :posts
-#   has_many :users, through: :posts 
-
-# end

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :reading_rooms
+  resources :reading_rooms, only: [:new] do
+    resources :posts, only: [:show, :new]
+  end
+  
   root to: "books#index"
   
   resources :books_authors
