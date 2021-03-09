@@ -19,8 +19,9 @@ class ShelvesController < ApplicationController
 
     def create
         @shelf = Shelf.new(shelf_params)
-        @shelf.user = current_user
-        if @shelf.save 
+        if @shelf.valid?
+            @shelf.user = current_user
+            @shelf.save
             redirect_to shelf_path(@shelf)
         else 
             render :new
