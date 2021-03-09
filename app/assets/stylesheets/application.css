@@ -1,3 +1,9 @@
 .col-sm {
     color: pink;
 }
+
+.shelf-title {
+    background-color: rgb(237, 234, 255);
+    border-radius: 25px;
+    padding: 20px;
+}

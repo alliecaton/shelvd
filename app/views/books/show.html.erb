@@ -1,6 +1,9 @@
 <img src="<%=@display_book.image_link%>" >
 <p><%= @display_book.title %></p>
-<p><%= @authors %></p>
+
+<% @authors.each do |author| %>
+<p><%= link_to author.name, author_path(author) %></p>
+<% end %>
 <p><%= @display_book.description %></p>
 <p><%= @display_book.average_rating %></p>
 
