@@ -13,22 +13,9 @@ class BooksController < ApplicationController
         @shelves = current_user.shelves if user_signed_in?
         isbn = params[:id]
 
-        # if Book.find_by(isbn: params[:id])
-        #     @display_book = Book.find_by(isbn: isbn)
-        #     @authors = find_author(@display_book.authors)
+        @display_book = Book.search("isbn:#{isbn}").first  
+        @authors = find_create(@display_book)
 
-        # else 
-            @display_book = Book.search("isbn:#{isbn}").first  
-            @authors = find_create(@display_book)
-byebug
-        # end
-
-        # ## Authors Helper method
-        # if book= Book.find_by(isbn: @display_book.isbn)
-        #    @authors = book.authors 
-        # else 
-        #     @authors = find_create(@display_book)
-        # end
         @book = Book.new
     end 
 

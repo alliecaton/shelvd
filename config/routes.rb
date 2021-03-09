@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: 'callbacks'}
 
   
-  root to: "books#index"
+  root to: "home#index"
   
   resources :posts
   resources :reading_rooms

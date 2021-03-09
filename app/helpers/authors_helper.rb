@@ -7,11 +7,5 @@ module AuthorsHelper
         end
     end
 
-    def find_author(authors_array)
-        authors_array.map do |author|
-            Author.find_by(name: author.name)
-        end 
-    end
-    
 
 end
