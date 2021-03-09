@@ -23,4 +23,8 @@ class Book < ApplicationRecord
         books.order :average_rating
     end
 
+    def select_current_user_shelves
+        
+    end
+
 end

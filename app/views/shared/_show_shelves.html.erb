@@ -8,6 +8,7 @@
          <% shelf.books.each do |book|%>
          <div class="col">
             <%= link_to book.title, book_path(book.isbn) %>
+            <%= button_to "Remove", book_path(book.isbn), params: {shelf_id: shelf.id}, method: :delete %>
             </div>
             <div class="col">
             <img src=<%=book.image_link%>

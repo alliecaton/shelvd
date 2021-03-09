@@ -35,6 +35,20 @@ class BooksController < ApplicationController
         end
     end
 
+    def destroy
+        book= Book.find_by(isbn: params[:id])
+        shelf= Shelf.find_by(id: params[:shelf_id])
+        # array= [@shelf.id, @book.id]
+
+        if user_signed_in? && shelf.user == current_user
+            shelf.books.delete(book)
+            redirect_to user_path(current_user)
+        end
+        
+
+
+    end 
+
     private 
 
     def book_params

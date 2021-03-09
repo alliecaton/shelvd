@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :books, params: :isbn
+  delete '/book/:id', to: 'books#destroy'
 
   resources :shelves
 
