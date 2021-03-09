@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
     belongs_to :user 
-    belongs_to :readingroom
+    belongs_to :reading_room
 
 end

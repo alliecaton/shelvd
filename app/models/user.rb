@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:github]
 
       has_many :posts
-      has_many :readingrooms, through: :posts
+      has_many :reading_rooms, through: :posts
       has_many :shelves
       has_many :books, through: :shelves
 
