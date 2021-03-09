@@ -1,4 +1,11 @@
 <%= form_with model: shelf do |f| %>
+  
+    <ul>
+    <% shelf.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  
   <div>
     <%= f.hidden_field :user_id %>
     <%= f.label :name %>

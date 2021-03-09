@@ -19,6 +19,7 @@ class BooksController < ApplicationController
             @display_book = Book.search("isbn:#{isbn}").first  
         end
 
+        ## Authors Helper method
         @authors = find_create(@display_book)
         @book = Book.new
     end 
