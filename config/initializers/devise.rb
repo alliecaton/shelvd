@@ -296,6 +296,9 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
+  config.omniauth :github, Rails.application.credentials.dig(:github, :GITHUB_KEY), 
+    Rails.application.credentials.dig(:github, :GITHUB_SECRET), scope: 'user, public_repo'
+
   # ==> Turbolinks configuration
   # If your app is using Turbolinks, Turbolinks::Controller needs to be included to make redirection work correctly:
   #
@@ -309,7 +312,7 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 
-  config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']#, scope: 'user,public_repo'
+
 
 
 end

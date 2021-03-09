@@ -17,6 +17,7 @@ class ReadingRoomsController < ApplicationController
     def create 
         @readingroom = ReadingRoom.new(room_params)
         if @readingroom.valid? 
+            @readingroom.users << current_user
             @readingroom.save 
             redirect_to reading_room_path(@readingroom)
         else

@@ -1,7 +1,7 @@
 <h2><%= @room.name %></h2>
 <h4><%= @room.description %></h4>
 
-<%= link_to "New Post",  new_reading_room_post_path(@room.id) %>
+<%= link_to "New Post",  new_reading_room_post_path(@room.id) if user_signed_in? %>
 
 <div>
 <h5>Active Users:</h5>
@@ -13,7 +13,9 @@
 
 
 <div>
+<% if @room.posts.length > 1 %>
 <% @room.posts.each do |post| %>
 <%= link_to post.user.email, user_path(post.user) %> - <%= post.content %> 
+<% end %>
 <% end %>
 </div>
