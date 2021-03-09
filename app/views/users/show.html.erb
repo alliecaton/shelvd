@@ -15,25 +15,7 @@
 
 </div>
 
-<div class="container-md">
-<div class="row align-items-start">
-<% @user.shelves.each do |shelf| %>
-   <div class="col-head">
-   <div class="shelf-title">
-   <p><%= link_to shelf.name, shelf_path(shelf)%></p>
-   </div>
-         <% shelf.books.each do |book|%>
-         <div class="col">
-            <%= link_to book.title, book_path(book) %>
-            </div>
-            <div class="col">
-            <img src=<%=book.image_link%>
-            </div>
-         <% end %>
-   </div>
-<% end %>
-</div>
-</div>
+<%= render partial: "show_shelves", locals: {user: @user} %>
 
 
 
