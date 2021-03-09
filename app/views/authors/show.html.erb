@@ -1,6 +1,8 @@
 <h2><%= @author.name %></h2>
 <ul>
 <%@books.each do |book|%>
+    <% if book.isbn %>
     <li><%= link_to book.title, book_path(book.isbn) %></li>
+    <% end %>
 <% end %>
 </ul>

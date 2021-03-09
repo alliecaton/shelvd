@@ -28,6 +28,17 @@ class ShelvesController < ApplicationController
         end 
     end
 
+    def edit 
+        @shelf = Shelf.find_by(id: params[:id])
+    end 
+
+    def update 
+        @shelf = Shelf.find_by(id: params[:id])
+        @shelf.update(shelf_params)
+        @shelf.save
+        redirect_to shelf_path(@shelf)
+    end 
+
     private
 
     def shelf_params
