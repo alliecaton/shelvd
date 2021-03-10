@@ -20,7 +20,7 @@ class BooksController < ApplicationController
     end 
 
     def create 
-        @new_book = Book.new(book_params)
+        @new_book = Book.find_or_initialize_by(initialize_params)
         
         params[:book][:authors].split(",").map do |author_name|
             @new_book.authors << Author.find_or_create_by(name: author_name)
@@ -30,26 +30,34 @@ class BooksController < ApplicationController
         if @shelf.books.find_by(title: @new_book.title)
             redirect_to book_path(@new_book.isbn), notice: "This book is already on this list!"
         else 
+            @new_book.update(book_params)
+            @new_book.shelves << @shelf 
+            byebug
             @new_book.save
             redirect_to book_path(@new_book.isbn), notice: "Book added to #{@shelf.name} shelf"
         end
     end
 
     def destroy
-        book= Book.find_by(isbn: params[:id])
-        shelf= Shelf.find_by(id: params[:shelf_id])
+        @book= Book.find_by(isbn: params[:id])
+        @shelf= Shelf.find_by(id: params[:shelf_id])
         # array= [@shelf.id, @book.id]
+        # BooksShelf.where("shelf_id = ?, book_id = ?", "array[0]", "array[1]")
+        # byebug
 
-        if user_signed_in? && shelf.user == current_user
-            shelf.books.delete(book)
+        if user_signed_in? && @shelf.user == current_user
+            @shelf.books.delete(@book) 
+            byebug
+            @shelf.save
             redirect_to user_path(current_user)
         end
-        
-
-
     end 
 
     private 
+
+    def initialize_params
+        params.require(:book).permit(:title)
+    end
 
     def book_params
         params.require(:book).permit(
@@ -57,9 +65,8 @@ class BooksController < ApplicationController
             :description, 
             :average_rating, 
             :author_id, 
-            :shelf_ids, 
             :isbn, 
-            :image_link
+            :image_link, 
          )
     end 
 

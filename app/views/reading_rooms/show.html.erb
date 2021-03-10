@@ -15,7 +15,9 @@
 <div>
 <% if @room.posts.length > 1 %>
 <% @room.posts.each do |post| %>
-<%= link_to post.user.name, user_path(post.user) %> - <%= post.content %> 
+<div>
+<%= link_to post.user.name, user_path(post.user) %> - <%= post.content %> <%= link_to "edit", edit_post_path(post) if post.user == current_user%> <%= link_to "delete", post_path(post), method: :delete if post.user == current_user%>
+</div>
 <% end %>
 <% end %>
 </div>

@@ -3,7 +3,7 @@ class BooksShelf < ApplicationRecord
     belongs_to :shelf
 
     def self.select_association(array)
-        self.where("shelf_id = ?, book_id = ?", "array[0]", "array[1]")
+        self.where("shelf_id = ?, book_id = ?", "array[0]", "array[1]").id
     end
 
 end

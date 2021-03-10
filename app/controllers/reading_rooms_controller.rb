@@ -1,5 +1,9 @@
 class ReadingRoomsController < ApplicationController
 
+    def index 
+        @readingrooms = ReadingRoom.all
+    end 
+
     def show 
         @room = ReadingRoom.find(params[:id])
     end
@@ -9,7 +13,6 @@ class ReadingRoomsController < ApplicationController
             redirect_to user_path(user), alert: "User not found"
         else
             @readingroom = ReadingRoom.new
-            @post = Post.new
         end
     end 
 

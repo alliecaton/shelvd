@@ -1,2 +1,10 @@
 
-<%= render partial: "shared/show_shelves", locals: {user: @shelf.user} %>
+<h2><%= @shelf.name %></h2>
+
+    <% @shelf.books.each do |book|%>
+        <%= link_to book.title, book_path(book.isbn) %>
+        <%= button_to "Remove", book_path(book.isbn), params: {shelf_id: @shelf.id}, method: :delete %>
+
+        <img src=<%=book.image_link%>
+
+    <% end %>

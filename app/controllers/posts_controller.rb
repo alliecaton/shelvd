@@ -12,7 +12,6 @@ class PostsController < ApplicationController
     def create 
         @post = Post.new(post_params)
         room = ReadingRoom.find_by(id: params[:post][:reading_room_id])
-        byebug
         if @post.valid? 
             @post.save 
             redirect_to reading_room_path(room)
