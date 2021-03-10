@@ -1,7 +1,8 @@
 <h2><%= @room.name %></h2>
 <h4><%= @room.description %></h4>
+<hr>
 
-<%= link_to "New Post",  new_reading_room_post_path(@room.id) if user_signed_in? %>
+
 
 <div>
 <h5>Active Users:</h5>
@@ -9,6 +10,7 @@
 <% @room.users.uniq.each do |user| %>
     <%= link_to user.name, user_path(user) %>
 <% end %>
+<hr>
 </div>
 
 

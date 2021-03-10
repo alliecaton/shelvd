@@ -1,3 +1,6 @@
+<%= render partial: "search" %>
+
 <%@readingrooms.each do |room|%>
     <%= link_to room.name, reading_room_path(room) %>
 <% end %>
+
