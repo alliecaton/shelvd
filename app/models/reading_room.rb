@@ -3,6 +3,8 @@ class ReadingRoom < ApplicationRecord
     has_many :users, through: :posts 
 
     validates :name, presence: :true
+    validates :description, presence: :true
+    validates :name, uniqueness: true 
 
 
 

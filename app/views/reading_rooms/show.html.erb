@@ -24,4 +24,5 @@
 <% end %>
 </div>
 
+<%= flash[:alert]%>
 <%= render partial: "posts/form", locals: {reading_room: @room, post: @post}%>

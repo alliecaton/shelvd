@@ -33,7 +33,7 @@ class BooksController < ApplicationController
             @new_book.update(book_params)
             @new_book.shelves << @shelf 
             @new_book.save
-            redirect_to book_path(@new_book.isbn), added: "Book added to #{@shelf.name} shelf"
+            redirect_to book_path(@new_book.isbn), notice: "Book added to #{@shelf.name} shelf"
         end
     end
 

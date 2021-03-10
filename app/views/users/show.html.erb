@@ -9,8 +9,8 @@
 <div>
 <h5>Reading Rooms</h5>
 
-<% @user.reading_rooms.each do |room| %>
-   <%= link_to room.name, reading_room_path(room) %>
+<% @user.reading_rooms.uniq.each do |room| %>
+   <%= link_to room.name, reading_room_path(room) %> |
 <% end %>
 
 </div>

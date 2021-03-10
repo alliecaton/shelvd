@@ -12,17 +12,26 @@ class PostsController < ApplicationController
     def create 
         @post = Post.new(post_params)
         room = ReadingRoom.find_by(id: params[:post][:reading_room_id])
-        if @post.valid? 
+        if @post.valid?
             @post.save 
             redirect_to reading_room_path(room)
         else 
-            render :new
+            redirect_to reading_room_path(room), alert: "Post could not be saved"
         end
     end
+
+    def edit
+    end 
+
+    def update
+    end 
+
+    def destroy 
+    end 
 
     private 
 
     def post_params 
-        params.require(:post).permit(:content, :reading_room_id, :user_id)
+        params.require(:post).permit(:content, :reading_room_id)
     end 
 end

@@ -29,11 +29,11 @@ class ReadingRoomsController < ApplicationController
     def create 
         @readingroom = ReadingRoom.new(room_params)
         if @readingroom.valid? 
-            @readingroom.users << current_user unless @readingroom.users.include?(current_user)
+            @readingroom.users
             @readingroom.save 
             redirect_to reading_room_path(@readingroom)
         else
-            render :new
+            :new
         end 
     end 
 
