@@ -7,24 +7,21 @@ class Book < ApplicationRecord
 
     validates :title, presence: true 
     validates :isbn, presence: :true 
-    # validate :author_id, presence: true
 
 
-
-    # def self.order_by_date
-    # end 
-
-
+    def self.highest_rated
+        self.where('average_rating >= ?', 4)
+    end
+    
     def self.search(search)
         book = GoogleBooks.search("#{search}", {count: 3 })
     end 
 
-    def self.sort_by_rating(books)
-        books.order :average_rating
-    end
+    # def self.order_by_date
+    # end 
 
-    def select_current_user_shelves
-        
-    end
+    # def self.sort_by_rating(books)
+    #     books.order :average_rating
+    # end
 
 end

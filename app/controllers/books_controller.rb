@@ -15,7 +15,7 @@ class BooksController < ApplicationController
 
         @display_book = Book.search("isbn:#{isbn}").first  
         @authors = find_create(@display_book)
-
+        
         @book = Book.new
     end 
 
@@ -40,7 +40,7 @@ class BooksController < ApplicationController
     def destroy
         @book= Book.find_by(isbn: params[:id])
         @shelf= Shelf.find_by(id: params[:shelf_id])
-        
+
         if user_signed_in? && @shelf.user == current_user
             @shelf.books.delete(@book) 
             @shelf.save
@@ -60,6 +60,7 @@ class BooksController < ApplicationController
             :description, 
             :average_rating, 
             :author_id, 
+            :ratings_count,
             :isbn, 
             :image_link, 
          )
