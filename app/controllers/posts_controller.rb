@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
 
+
     def new
         if user = User.find_by(id: params[:user_id])
             params[:user_id] && user_signed_in? && user != current_user
             redirect_to user_path(user), alert: "User not found"
         else 
-            @post = Post.new(user_id: current_user.id, reading_room_id: params[:reading_room_id])
+            @post = Post.new
         end
     end
 
@@ -21,15 +22,24 @@ class PostsController < ApplicationController
     end
 
     def edit
-        @post = Post.find(params[:id])
+        room = ReadingRoom.find(params[:reading_room_id])
+        if current_user.id == params[:user_id].to_i
+            @post = Post.find(params[:id])
+        else 
+            redirect_to reading_room_path(room), alert: "You are not the owner of this post"
+        end
     end 
 
     def update
-        room = ReadingRoom.find_by(id: params[:post][:reading_room_id])
-        post = Post.find_by(id: params[:id])
-        post.update(post_params)
-        post.save
-        redirect_to reading_room_path(room)
+        if current_user.id == params[:post][:user_id].to_i
+            room = ReadingRoom.find_by(id: params[:post][:reading_room_id])
+            post = Post.find_by(id: params[:id])
+            post.update(post_params)
+            post.save
+            redirect_to reading_room_path(room)
+        else 
+            redirect_to reading_room_path(room), alert: "You are not the owner of this post"
+        end
     end 
 
     def destroy 
