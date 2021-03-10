@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   root to: "home#index"
   
   resources :posts
+
+
   resources :reading_rooms
   resources :reading_rooms, only: [:show] do
-    resources :posts, only: [:new]
+    resources :posts, only: [:new, :edit, :update]
   end
   
 
