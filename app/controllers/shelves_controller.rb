@@ -22,7 +22,7 @@ class ShelvesController < ApplicationController
         if @shelf.valid?
             @shelf.user = current_user
             @shelf.save
-            redirect_to shelf_path(@shelf)
+            redirect_to user_path(current_user)
         else 
             render :new
         end 

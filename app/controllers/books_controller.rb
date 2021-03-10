@@ -32,7 +32,6 @@ class BooksController < ApplicationController
         else 
             @new_book.update(book_params)
             @new_book.shelves << @shelf 
-            byebug
             @new_book.save
             redirect_to book_path(@new_book.isbn), notice: "Book added to #{@shelf.name} shelf"
         end
@@ -41,13 +40,9 @@ class BooksController < ApplicationController
     def destroy
         @book= Book.find_by(isbn: params[:id])
         @shelf= Shelf.find_by(id: params[:shelf_id])
-        # array= [@shelf.id, @book.id]
-        # BooksShelf.where("shelf_id = ?, book_id = ?", "array[0]", "array[1]")
-        # byebug
-
+        
         if user_signed_in? && @shelf.user == current_user
             @shelf.books.delete(@book) 
-            byebug
             @shelf.save
             redirect_to user_path(current_user)
         end
@@ -56,7 +51,7 @@ class BooksController < ApplicationController
     private 
 
     def initialize_params
-        params.require(:book).permit(:title)
+        params.require(:book).permit(:isbn)
     end
 
     def book_params
