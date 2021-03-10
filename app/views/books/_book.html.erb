@@ -1,0 +1,7 @@
+
+<div class="user-flex">
+        <%= link_to book.title, book_path(book.isbn) %>
+        <img src="<%= book.image_link%>" >
+        <%= book.average_rating %>
+        <%= book.ratings_count%>
+</div>

@@ -1,11 +1,9 @@
+<div>
+    <h2>Find Your Next Book</h2>
 
-<h2>Find Your Next Book</h2>
+    <%= render 'shared/search' %>
+</div>
 
-<%= render 'shared/search' %>
-
-<% @books.each do |book| %>
-    <%= link_to book.title, book_path(book) %>
-    <img src="<%= book.image_link%>" >
-    <%= book.average_rating %>
-    <%= book.ratings_count%>
-<% end %>
+<div>
+    <%= render @books %>
+</div>

@@ -6,8 +6,8 @@
 <div>
 <h5>Active Users:</h5>
 
-<% @room.users.each do |user| %>
-    <%= user.name %>
+<% @room.users.uniq.each do |user| %>
+    <%= link_to user.name, user_path(user) %>
 <% end %>
 </div>
 
@@ -21,3 +21,5 @@
 <% end %>
 <% end %>
 </div>
+
+<%= render partial: "posts/form", locals: {reading_room: @room, post: @post}%>

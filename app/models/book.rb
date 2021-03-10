@@ -5,12 +5,18 @@ class Book < ApplicationRecord
     has_many :books_authors
     has_many :authors, through: :books_authors
 
+    scope :highest_rated, -> {where('average_rating >= ?', 4).sort}
+
     validates :title, presence: true 
     validates :isbn, presence: :true 
 
 
-    def self.highest_rated
-        self.where('average_rating >= ?', 4)
+    def most_pop
+        average_rating.to_i * ratings_count.to_i
+    end
+
+    def self.highest_rated_sorted
+        highest_rated.sort_by {|book| book.most_pop }
     end
     
     def self.search(search)

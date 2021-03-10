@@ -6,6 +6,12 @@ class ReadingRoomsController < ApplicationController
 
     def show 
         @room = ReadingRoom.find(params[:id])
+        if user = User.find_by(id: params[:user_id])
+            params[:user_id] && user_signed_in? && user != current_user
+            redirect_to user_path(user), alert: "User not found"
+        else 
+            @post = Post.new(user_id: current_user.id, reading_room_id: @room.id)
+        end
     end
 
     def new 
