@@ -3,7 +3,7 @@
 <ul>
 <%@books.each do |book|%>
     <% if book.isbn %>
-    <li><%= link_to book.title, book_path(book.isbn) %></li>
+        <li><%= link_to book.title, book_path(book.isbn) %></li>
     <% end %>
 <% end %>
 </ul>
