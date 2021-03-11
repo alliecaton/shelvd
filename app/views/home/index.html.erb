@@ -1,12 +1,14 @@
-<div>
+<% content_for :show do %>
     <h2>Find Your Next Book</h2>
 
     <%= render 'shared/search' %>
 </div>
+<% end %>
+
 
 <div class="container px-lg-5">
+    <h2>Top Rated Books</h2>
 <div class="row mx-lg-n5">
-
     <%= render @books %>
 </div>
 </div>

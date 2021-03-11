@@ -1,6 +1,24 @@
+<% content_for :show do %>
+
+<div class="row mx-lg-n5">
+<div class="col-lg py-3 px-lg-5 bg-light">
+<h2>Reading Rooms</h2>
+<h4>Discussion rooms for your favorite topics!</h4>
+</div>
+
+
+<div class="col-lg py-3 px-lg-5 bg-light">
+<%= link_to 'Create New Reading Room', new_reading_room_path if user_signed_in? %>
+</div>
+
+</div>
+
 <%= render partial: "search" %>
 
+<ul>
 <%@readingrooms.each do |room|%>
-    <div><%= link_to room.name, reading_room_path(room) %></div>
+    <li><%= link_to room.name, reading_room_path(room) %></li>
+<% end %>
+</ul>
 <% end %>
 

@@ -7,7 +7,6 @@ class ReadingRoom < ApplicationRecord
     validates :name, uniqueness: true 
 
 
-
     def self.search(search)
         self.where("name LIKE ?", "%#{search}%")
     end 

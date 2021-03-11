@@ -1,4 +1,5 @@
-<%= @user.name %> 
+<% content_for :show do %>
+<h2><%= @user.name || @user.email %></h2>
 
 <div><%= link_to 'Create New Shelf', new_user_shelf_path(@user) if @user == current_user %></div>
 
@@ -17,5 +18,4 @@
 
 <%= render partial: "shared/show_shelves", locals: {user: @user} %>
 
-
-
+<% end %>
