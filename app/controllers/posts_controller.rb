@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
 
     def new
@@ -44,8 +45,13 @@ class PostsController < ApplicationController
 
     def destroy 
         room = ReadingRoom.find_by(id: params[:reading_room_id])
-        Post.find(params[:id]).destroy
-        redirect_to reading_room_path(room)
+        post = Post.find(params[:id])
+        if post.user == current_user
+            post.destroy
+            redirect_to reading_room_path(room)
+        else 
+            redirect_to reading_room_path(room), alert: "You are not the owner of this post"
+        end
     end 
 
     private 

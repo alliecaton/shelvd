@@ -1,6 +1,6 @@
 class ShelvesController < ApplicationController
-    ## add before action that requires login
-    
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
     def index
     end
 
@@ -10,10 +10,10 @@ class ShelvesController < ApplicationController
 
     def new
         user = User.find_by(id: params[:user_id])
-        if params[:user_id] && user_signed_in? && user != current_user
-            redirect_to user_path(user), alert: "User not found"
-        else
+        if user == current_user
             @shelf = Shelf.new(user_id: params[:user_id])
+        else 
+            redirect_to user_path(current_user)
         end
     end 
 
@@ -30,20 +30,31 @@ class ShelvesController < ApplicationController
 
     def edit 
         @shelf = Shelf.find_by(id: params[:id])
+        if @shelf.user == current_user
+            redirect_to user_path(current_user)
+        end
     end 
 
     def update 
         @shelf = Shelf.find_by(id: params[:id])
-        @shelf.update(shelf_params)
-        @shelf.save
-        redirect_to shelf_path(@shelf)
+        if @shelf.user == current_user
+            @shelf.update(shelf_params)
+            @shelf.save
+            redirect_to shelf_path(@shelf)
+        else 
+            redirect_to user_path(current_user)
+        end 
     end 
 
     def destroy
-        shelf = Shelf.find_by(id: params[:id])
+        @shelf = Shelf.find_by(id: params[:id])
         user = User.find_by(id: params[:user_id])
-        shelf.destroy
-        redirect_to user_path(user)
+        if user == current_user 
+            shelf.delete
+            redirect_to user_path(user)
+        else 
+            redirect_to user_path(current_user)
+        end
     end
 
     private

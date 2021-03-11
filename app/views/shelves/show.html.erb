@@ -1,7 +1,7 @@
 <% content_for :show do %>
 
 <h2><%= @shelf.name %></h2>
-    <%= link_to "edit shelf", edit_shelf_path(@shelf) %>
+    <%= link_to "edit shelf", edit_user_shelf(@shelf.user, @shelf) %>
     <%= link_to "delete shelf", shelf_path(@shelf, user_id: @shelf.user.id), method: :delete %>
     <%#= link_to "delete shelf", destroy_shelf_path(@shelf) %>
 

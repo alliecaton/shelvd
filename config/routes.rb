@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :shelves
   resources :users
   resources :users, only: [:show] do 
-    resources :shelves, only: [:show, :new]
+    resources :shelves, only: [:show, :new, :edit]
   end
 
   resources :books, params: :isbn

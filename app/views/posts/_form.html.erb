@@ -5,8 +5,8 @@
       <p><%= msg %></p>
     <% end %>
 
-<%= f.hidden_field :user_id %>
-<%= f.hidden_field :reading_room_id %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :reading_room_id, value: reading_room.id  %>
   
   <div>
     <%= f.label :content %><br>

@@ -13,4 +13,11 @@ class Shelf < ApplicationRecord
 #     def self.find_book_in_shelf(book)
 #         self.where("shelf_id = ?, book_id = ?", "array[0]", "array[1]")
 #     end
+
+    # def is_logged_in_and_owner?
+    #     byebug
+    #     unless user_signed_in? && self.user == current_user
+    #         redirect_to user_path(current_user)
+    #     end
+    # end
 end
