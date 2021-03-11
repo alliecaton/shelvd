@@ -1,9 +1,10 @@
 <% content_for :show do %>
 
 <h2><%= @shelf.name %></h2>
-    <%= link_to "edit shelf", edit_user_shelf(@shelf.user, @shelf) %>
-    <%= link_to "delete shelf", shelf_path(@shelf, user_id: @shelf.user.id), method: :delete %>
-    <%#= link_to "delete shelf", destroy_shelf_path(@shelf) %>
+    <% if @shelf.user == current_user %>
+        <%= link_to "edit shelf", edit_user_shelf_path(@shelf.user, @shelf) %>
+        <%= link_to "delete shelf", shelf_path(@shelf, user_id: @shelf.user.id), method: :delete %>
+    <% end %>
 
 
     <% @shelf.books.each do |book|%>

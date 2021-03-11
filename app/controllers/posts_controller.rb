@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     end
 
     def edit
-        room = ReadingRoom.find(params[:reading_room_id])
+        @room = ReadingRoom.find(params[:reading_room_id])
         if current_user.id == params[:user_id].to_i
             @post = Post.find(params[:id])
         else 

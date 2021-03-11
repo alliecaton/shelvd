@@ -1,4 +1,5 @@
 class ReadingRoomsController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create]
 
     def index 
         if params[:search]
@@ -10,20 +11,12 @@ class ReadingRoomsController < ApplicationController
 
     def show 
         @room = ReadingRoom.find(params[:id])
-        # if user = User.find_by(id: params[:user_id])
-        #     params[:user_id] && user_signed_in? && user != current_user
-        #     redirect_to user_path(user), alert: "User not found"
-        # else 
-            @post = Post.new
-        # end
+        @post = Post.new
     end
 
     def new 
-        if params[:user_id] && user_signed_in? && user != current_user
-            redirect_to user_path(user), alert: "User not found"
-        else
-            @readingroom = ReadingRoom.new
-        end
+        @readingroom = ReadingRoom.new
+    
     end 
 
     def create 
