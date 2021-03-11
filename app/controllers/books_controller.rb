@@ -1,12 +1,16 @@
 class BooksController < ApplicationController
-## add before action that requires login to create
-## user_signed_in?
+    before_action :authenticate_user!, only: [:create, :destroy]
     include AuthorsHelper
 
     def index 
         if params[:search]
             @books = Book.search("#{params[:search]}").uniq {|book| book.title }
         end
+    end 
+
+    def top_rated
+        @books = Book.highest_rated_sorted[0..9]
+        render :index
     end 
 
     def show 
@@ -41,7 +45,7 @@ class BooksController < ApplicationController
         @book= Book.find_by(isbn: params[:id])
         @shelf= Shelf.find_by(id: params[:shelf_id])
 
-        if user_signed_in? && @shelf.user == current_user
+        if @shelf.user == current_user
             @shelf.books.delete(@book) 
             @shelf.save
             redirect_to user_path(current_user)
