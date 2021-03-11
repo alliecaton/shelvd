@@ -6,7 +6,7 @@
 <% user.shelves.each do |shelf| %>
    <div class="col-head">
    <div class="shelf-title">
-   <p><%= link_to shelf.name, shelf_path(shelf)%></p>
+   <p><%= link_to shelf.name, user_shelf_path(user, shelf)%></p>
 
 
    </div>

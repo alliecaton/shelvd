@@ -39,6 +39,13 @@ class ShelvesController < ApplicationController
         redirect_to shelf_path(@shelf)
     end 
 
+    def destroy
+        shelf = Shelf.find_by(id: params[:id])
+        user = User.find_by(id: params[:user_id])
+        shelf.destroy
+        redirect_to user_path(user)
+    end
+
     private
 
     def shelf_params

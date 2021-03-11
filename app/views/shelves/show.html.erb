@@ -1,10 +1,16 @@
+<% content_for :show do %>
 
 <h2><%= @shelf.name %></h2>
+    <%= link_to "edit shelf", edit_shelf_path(@shelf) %>
+    <%= link_to "delete shelf", shelf_path(@shelf, user_id: @shelf.user.id), method: :delete %>
+    <%#= link_to "delete shelf", destroy_shelf_path(@shelf) %>
+
 
     <% @shelf.books.each do |book|%>
-        <%= link_to book.title, book_path(book.isbn) %>
-        <%= button_to "Remove", book_path(book.isbn), params: {shelf_id: @shelf.id}, method: :delete %>
 
-        <img src=<%=book.image_link%>
+    <%= render partial: "books/book", locals: {book: book} %>
+    <%= button_to "Remove", book_path(book.isbn), params: {shelf_id: @shelf.id}, method: :delete %>
+    <hr>
 
     <% end %>
+<% end%>

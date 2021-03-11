@@ -1,9 +1,9 @@
 
 <div class="col-sm py-3 px-lg-5 bg-light">
         <div class="col-sm px-xs-5">
-                <%= link_to book.title, book_path(book.isbn) %>
+                <h5><%= link_to book.title, book_path(book.isbn) %></h5>
         </div>
                 <%=link_to image_tag(book.image_link), book_path(book.isbn)  %>
-                ⭐ <%= book.average_rating %>
+                <br><%= show_star(book.average_rating) %>
 
 </div>

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :authors
   
   
+  resources :shelves
   resources :users
   resources :users, only: [:show] do 
     resources :shelves, only: [:show, :new]
@@ -25,6 +26,5 @@ Rails.application.routes.draw do
   resources :books, params: :isbn
 
 
-  resources :shelves
 
 end
