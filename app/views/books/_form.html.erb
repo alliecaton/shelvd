@@ -10,6 +10,10 @@
 
 <%= f.collection_select 'shelf_ids', @shelves, :id, :name %>
 
+
 <%= f.submit "Add Book" %> 
+
 <%end%>
+<div class="notice">
 <%= flash[:notice] %>
+</div>

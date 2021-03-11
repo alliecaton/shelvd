@@ -12,3 +12,11 @@
     display: flex;
     flex-flow: row wrap;
 }
+
+.notice {
+    color: rgb(100, 117, 186);
+}
+
+.container {
+    padding: 15px;
+}
