@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_172757) do
+ActiveRecord::Schema.define(version: 2021_03_12_185900) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_172757) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image_link"
-    t.integer "isbn"
+    t.integer "isbn", limit: 8
     t.integer "category_id"
   end
 
