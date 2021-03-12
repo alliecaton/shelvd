@@ -2,7 +2,7 @@
 
 Shelvd is a book tracking application made in Ruby on Rails. Create your own personal reading lists through shelves, or talk about your favorite topics in Reading Rooms!
 
-![screenshot of Shelvd homepage](shelvd/readme/homepage.png)
+![screenshot of Shelvd homepage](homepage.png)
 
 ## Installation
 
