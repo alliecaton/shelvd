@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
+gem 'dotenv-rails', groups: [:development, :test]
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+gem 'pg'
 
 ruby '2.6.6'
 
@@ -32,7 +35,6 @@ gem 'googlebooks'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
-gem 'dotenv'
 gem 'omniauth-github', '1.4.0'
 gem 'activerecord-session_store'
 

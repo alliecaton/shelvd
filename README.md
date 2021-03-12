@@ -1,24 +1,24 @@
-# README
+# Shelvd
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Shelvd is a book tracking application made in Ruby on Rails. 
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
-* System dependencies
+```bash
+pip install foobar
+```
 
-* Configuration
+## Usage
 
-* Database creation
+```python
+import foobar
 
-* Database initialization
+foobar.pluralize('word') # returns 'words'
+foobar.pluralize('goose') # returns 'geese'
+foobar.singularize('phenomena') # returns 'phenomenon'
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+[MIT](https://choosealicense.com/licenses/mit/)

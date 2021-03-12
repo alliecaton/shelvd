@@ -25,6 +25,5 @@ Rails.application.routes.draw do
 
   resources :books, params: :isbn
 
-  get '/books/top-rated', to: 'books#top_rated'
 
 end

@@ -6,10 +6,8 @@ class ReadingRoom < ApplicationRecord
     validates :description, presence: :true
     validates :name, uniqueness: true 
 
+    scope :search, ->(search) {where("name LIKE ?", "%#{search}%")}
 
-    def self.search(search)
-        self.where("name LIKE ?", "%#{search}%")
-    end 
 
 end
 

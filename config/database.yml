@@ -20,6 +20,9 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+production: 
+  url: <%= ENV['SHELVD_DATABASE_URL'] %>
+
 production:
-  <<: *default
-  database: db/production.sqlite3
+  <<: postgresql
+  database: shelvd_production
