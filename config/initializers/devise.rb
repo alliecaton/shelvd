@@ -296,6 +296,7 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
+  OmniAuth.config.allowed_request_methods = [:post, :get]
   config.omniauth :github, ENV['GITHUB_KEY'], 
    ENV['GITHUB_SECRET'], scope: 'user, public_repo'
 
