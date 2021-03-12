@@ -4,6 +4,10 @@ Shelvd is a book tracking application made in Ruby on Rails.
 
 ## Installation
 
+This application is available at: https://shelvd-app.herokuapp.com/
+
+
+
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash

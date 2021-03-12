@@ -1,5 +1,5 @@
 class ShelvesController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
 
     def index
     end
@@ -30,7 +30,7 @@ class ShelvesController < ApplicationController
 
     def edit 
         @shelf = Shelf.find_by(id: params[:id])
-        if @shelf.user == current_user
+        if @shelf.user != current_user
             redirect_to user_path(current_user)
         end
     end 
@@ -50,7 +50,7 @@ class ShelvesController < ApplicationController
         @shelf = Shelf.find_by(id: params[:id])
         user = User.find_by(id: params[:user_id])
         if user == current_user 
-            shelf.delete
+            @shelf.delete
             redirect_to user_path(user)
         else 
             redirect_to user_path(current_user)
