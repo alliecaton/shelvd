@@ -1,21 +1,26 @@
 
 
-<div class="container-md">
+<% content_for :shelf do %>
 
-<div class="row align-items-start">
-<% user.shelves.each do |shelf| %>
-   <div class="col-head">
-   <div class="shelf-title">
-   <p><%= link_to shelf.name, user_shelf_path(user, shelf)%></p>
+<div class="container">
 
+   <div class="row mx-lg-n5 align-items-start">
+         <% user.shelves[0..4].each do |shelf| %>
+      <div class="col-6 px-lg-5">   
+               <div class="col-sm-8">
+                  <hr>
+                  <h4 class="shelf-title"><%= link_to shelf.name, user_shelf_path(user, shelf)%></h4>
 
+                  <% shelf.books.each do |book|%>
+                     <%= render partial: "books/book", locals: {book: book} %>
+                  <% end %>
+               </div>
+      </div>
+            <% end %>
    </div>
-         <% shelf.books.each do |book|%>
-            <%= render partial: "books/book", locals: {book: book}%>
-         <% end %>
-   </div>
-<% end %>
 </div>
-</div>
+
+<% end %>   
+
 
 
