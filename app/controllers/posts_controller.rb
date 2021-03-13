@@ -27,6 +27,7 @@ class PostsController < ApplicationController
         if current_user.id == params[:user_id].to_i
             @post = Post.find(params[:id])
         else 
+            
             redirect_to reading_room_path(room), alert: "You are not the owner of this post"
         end
     end 

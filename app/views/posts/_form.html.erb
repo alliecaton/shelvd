@@ -1,9 +1,5 @@
 <%= form_with model: post do |f| %>
-  
 
-    <% post.errors.full_messages.each do |msg| %>
-      <p><%= msg %></p>
-    <% end %>
 
 <%= f.hidden_field :user_id, value: current_user.id %>
 <%= f.hidden_field :reading_room_id, value: reading_room.id  %>

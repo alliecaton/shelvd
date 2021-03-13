@@ -16,7 +16,6 @@ class ReadingRoomsController < ApplicationController
 
     def new 
         @readingroom = ReadingRoom.new
-    
     end 
 
     def create 
@@ -26,7 +25,7 @@ class ReadingRoomsController < ApplicationController
             @readingroom.save 
             redirect_to reading_room_path(@readingroom)
         else
-            :new
+            render :new
         end 
     end 
 

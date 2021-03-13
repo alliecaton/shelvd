@@ -5,10 +5,6 @@ class BooksController < ApplicationController
     def index 
         if params[:search]
             @books = Book.search("#{params[:search]}").uniq {|book| book.title }
-                if @books.length < 1
-                    redirect_to books_path, notice: "There are no results for your search"
-                end
-
         end
     end 
 

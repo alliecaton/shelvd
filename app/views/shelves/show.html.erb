@@ -10,7 +10,9 @@
     <% @shelf.books.each do |book|%>
 
     <%= render partial: "books/book", locals: {book: book} %>
-    <%= button_to "Remove", book_path(book.isbn), params: {shelf_id: @shelf.id}, method: :delete %>
+    <% if @shelf.user == current_user %>
+        <%= button_to "Remove", book_path(book.isbn), params: {shelf_id: @shelf.id}, method: :delete %>
+    <% end %>
     <hr>
 
     <% end %>
