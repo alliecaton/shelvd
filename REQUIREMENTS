@@ -1,8 +1,3 @@
-FOR TOMORROW: 
-
-look into before action validating user ownership of an object - DONE 
-get working on styling - DONE
-
 
     <<<<Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)>>>>
     <<<<Include third party signup/login (how e.g. Devise/OmniAuth)>>>>
