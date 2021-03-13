@@ -3,7 +3,9 @@
         <div class="col-sm px-xs-5">
                 <h5><%= link_to book.title, book_path(book.isbn) %></h5>
         </div>
-        <%=link_to image_tag(book.image_link), book_path(book.isbn)  %>
+        <%= link_to href: book_path(book.isbn) do %>
+                <%=link_to image_tag(book.image_link), book_path(book.isbn) %>
+        <%end%>
         <br><%= show_star(book.average_rating) %>
 
 </div>
