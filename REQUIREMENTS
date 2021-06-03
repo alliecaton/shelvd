@@ -14,3 +14,9 @@
     <<<<Using Ruby on Rails for the project>>>>
     <<<<Include at least  one has_many relationship (x has_many y; e.g. User has_many Recipes)>>>>
     <<<<Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)>>>>
+
+
+
+
+Extensions: 
+    - tabnine

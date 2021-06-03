@@ -8,6 +8,7 @@
 <div>
 
 <div>
+<%= link_to "All Posts", user_posts_path(@user)%>
 <h5>Reading Rooms</h5>
 
 <% @user.reading_rooms.uniq.each do |room| %>
@@ -17,6 +18,7 @@
 </div>
 
 <% end %>
+
 
 
 <%= render partial: "shared/show_shelves", locals: {user: @user} %>

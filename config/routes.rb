@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :users
   resources :users, only: [:show] do 
     resources :shelves, only: [:show, :new, :edit]
+    resources :posts, only: [:index]
   end
 
   resources :books, params: :isbn

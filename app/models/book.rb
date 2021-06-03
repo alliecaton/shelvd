@@ -5,7 +5,7 @@ class Book < ApplicationRecord
     has_many :books_authors
     has_many :authors, through: :books_authors
 
-    scope :highest_rated, -> {where('average_rating >= ?', 4).sort}
+    scope :highest_rated, -> {where('average_rating >= ?', 4).order(average_rating: "DESC")}
 
     validates :title, presence: true 
     validates :isbn, presence: :true 
@@ -23,12 +23,5 @@ class Book < ApplicationRecord
     def self.search(search)
         book = GoogleBooks.search("#{search}", {count: 3 })
     end 
-
-    # def self.order_by_date
-    # end 
-
-    # def self.sort_by_rating(books)
-    #     books.order :average_rating
-    # end
 
 end

@@ -2,6 +2,11 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
 
+    def index 
+        user = User.find_by(id: params[:user_id])
+        @posts = user.posts
+    end
+    
     def new
         if user = User.find_by(id: params[:user_id])
             params[:user_id] && user_signed_in? && user != current_user
